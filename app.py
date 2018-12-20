@@ -12,6 +12,7 @@ redis = Redis(host="redis")
 
 @app.route("/")
 def hello():
+    redis.incr('counter')
     visits = redis.incr('counter')
     html = "<h3>Hello World!</h3>" \
            "<b>Visits:</b> {visits}" \
